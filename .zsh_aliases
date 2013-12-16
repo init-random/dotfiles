@@ -1,0 +1,2 @@
+alias mysql='mysql -hlocalhost -uroot -p'
+
