@@ -1,0 +1,4 @@
+price_diff
+found_price
+cdate
+search_id

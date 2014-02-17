@@ -38,11 +38,6 @@ imap <C-a> <ESC>:w<CR>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
  
-" functions
-function! Find(str)
-    execute ":/\c".a:str
-endfunction
-
 hi CursorLine guibg=Grey25
 
 set wildchar=<Tab> wildmenu wildmode=full
@@ -51,3 +46,19 @@ let g:NERDTreeMapHelp="<F12>"
 let g:NERDTreeDirArrows=1
 
 " call pathogen#infect()
+
+function AsTmpFile(...)
+    if !exists("~/.vim/tmp")
+        let l:t=system("mkdir ~/.vim/tmp")
+        unlet l:t
+    endif
+    let l:fname="_".system("date | md5sum | cut -d' ' -f1")
+    let l:fname = substitute(l:fname, '\n$', '', '')
+    let l:suffix=".txt"
+    if exists("a:1")
+        let l:suffix=".".a:1
+    endif
+    let l:fname=l:fname . l:suffix
+    execute ":w ~/.vim/tmp/" . l:fname
+endfunction
+                                                                    
