@@ -41,6 +41,8 @@ cnoremap <C-f> <Right>
 hi CursorLine guibg=Grey25
 
 set wildchar=<Tab> wildmenu wildmode=full
+set completeopt=longest,menuone
+set scrolloff=4
 
 let g:NERDTreeMapHelp="<F12>"
 let g:NERDTreeDirArrows=1
