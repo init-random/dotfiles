@@ -1,0 +1,22 @@
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+termcapinfo xterm* ti@:te@
+altscreen on
+defscrollback 50000
+
+chdir /home/k/q5/quant5
+screen -t sbt 0  
+chdir /home/k/q5/quant5
+screen -t src 1  
+chdir /home/k/q5/quant5
+screen -t log 2  
+chdir /home/k/
+screen -t qa-mongo 3  
+chdir /home/k/
+screen -t local-mongo 4  
+chdir /home/k/
+screen -t idea 5 
+chdir /home/k/projects
+screen -t projects 6
+chdir /home/k
+screen -t misc 7
