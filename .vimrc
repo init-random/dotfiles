@@ -38,7 +38,6 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'majutsushi/tagbar'
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -58,6 +57,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'
 
+" non-active plugs to research
 " Search results counter
 " Plug 'vim-scripts/IndexedSearch'
 " A couple of nice colorschemes
@@ -69,15 +69,6 @@ Plug 'mhinz/vim-startify'
 " Code commenter
 " Plug 'scrooloose/nerdcommenter'
 " Class/module browser
-" non-active plugs to research
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'altercation/vim-colors-solarized'
-" Consoles as buffers (neovim has its own consoles as buffers)
-" Plug 'rosenfeld/conque-term'
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Pending tasks list
 " Plug 'fisadev/FixedTaskList.vim'
 " Async autocompletion
@@ -125,6 +116,15 @@ Plug 'mhinz/vim-startify'
 " Plug 'myusuf3/numbers.vim'
 " Nice icons in the file explorer and file type status line.
 " Plug 'ryanoasis/vim-devicons'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'ludovicchabant/vim-gutentags'
+" Consoles as buffers (neovim has its own consoles as buffers)
+" Plug 'rosenfeld/conque-term'
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
 
 call plug#end()
 
@@ -159,8 +159,10 @@ imap <C-a> <ESC>:w<CR>
 nmap <C-S-Left> g;
 nmap <C-S-Right> g,
  
-imap <C-s> <Esc>/
 
+set wildchar=<Tab>
+set wildmenu wildmode=longest,list,full
+set completeopt=menu,preview
 
 let g:python3_host_prog = expand('~/anaconda/envs/torch/bin/python')
 
@@ -178,10 +180,10 @@ EOF
 " set laststatus=2  " always display the status line
 
 
-set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set incsearch
 
 
 let mapleader=";"
@@ -205,7 +207,8 @@ au BufNewFile,BufRead Makefile
     \ set tabstop=4 |
     \ set shiftwidth=4
 
-au BufNewFile,BufRead *.tex,*.txt
+au BufNewFile,BufRead *.tex
+    \ set filetype=plaintex |
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -231,6 +234,7 @@ autocmd vimenter *
 hi CursorLine guibg=Grey25
 set cursorline
 au BufRead * :hi Visual gui=None term=None cterm=None ctermbg=015 guibg=#196FD9
+
 
 " slime settings
 " c-enter - sent to terminal
